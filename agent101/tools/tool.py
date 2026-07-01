@@ -10,7 +10,7 @@ class Tool:
     """Wraps a Python function as an agent tool."""
     name: str
     description: str
-    parameters: dict
+    parameters: dict[str, Any]
     fn: Callable[..., Any]
 
     def to_openai_schema(self) -> ChatCompletionToolUnionParam:

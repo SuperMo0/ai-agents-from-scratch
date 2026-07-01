@@ -29,9 +29,9 @@ if __name__ == "__main__":
     if "--chat" in sys.argv:
         run_conversational_repl()
     else:
-        question = sys.argv[1]
-        if not question:
+        if len(sys.argv) < 2 or not sys.argv[1].strip():
             print('Usage: uv run main.py "<question>"  (or --chat for interactive mode)')
             sys.exit(1)
+        question = sys.argv[1]
         agent = Agent(tools=RESEARCH_TOOLS)
         agent.run(question, verbose=True)

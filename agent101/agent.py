@@ -3,7 +3,7 @@ import time
 from dataclasses import dataclass, field
 from typing import Any, Literal, cast
 
-from openai.types.chat import ChatCompletionMessage, ChatCompletionMessageParam, ChatCompletionToolUnionParam
+from openai.types.chat import ChatCompletionMessage, ChatCompletionMessageParam, ChatCompletionToolUnionParam, ChatCompletionMessageToolCallUnion
 from pydantic import BaseModel, Field
 
 from clients import RESULTS_DIR, SUB_CALL_MODEL, client
@@ -245,7 +245,7 @@ class Agent:
 
         return answer
 
-    def _handle_tool_calls(self, state: AgentState, tool_calls, verbose: bool) -> None:
+    def _handle_tool_calls(self, state: AgentState, tool_calls:list[ChatCompletionMessageToolCallUnion], verbose: bool) -> None:
         for tool_call in tool_calls:
             if tool_call.type != "function":
                 continue
