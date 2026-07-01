@@ -7,6 +7,6 @@ requires-python = ">=3.14"
 dependencies = [
     "dotenv>=0.9.9",
     "openai>=2.44.0",
-    "requests>=2.34.2",
     "simpleeval>=1.0.3",
+    "tavily-python>=0.5.0",
 ]
